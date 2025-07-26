@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="electronics-product-page">
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Electronics Products</h1>
+      <p class="page-subtitle">Explore the latest in electronics!</p>
+    </div>
+  </div>
+  <div class="container py-4">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+        <div class="card h-100 shadow-sm">
+          <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+          </div>
+          <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-primary">${{ product.price }}</span>
+            <button class="btn btn-outline-primary btn-sm" (click)="addToCart(product)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer> 

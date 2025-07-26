@@ -1,0 +1,88 @@
+<!-- Categories Page -->
+<app-navbar></app-navbar>
+
+<div class="categories-page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="page-title">Product Categories</h1>
+          <p class="page-subtitle">Explore our wide range of product categories and find exactly what you're looking for</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <div class="category-stats">
+            <span class="stat-item">
+              <i class="bi bi-grid-3x3-gap"></i>
+              {{ categories.length }} Categories
+            </span>
+            <span class="stat-item">
+              <i class="bi bi-box"></i>
+              {{ totalProducts }} Products
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Grid -->
+  <div class="categories-section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" *ngFor="let category of categories">
+          <div class="category-card" (click)="onCategoryClick(category)">
+            <div class="category-image">
+              <img [src]="category.image" [alt]="category.name" class="category-img" />
+              <div class="category-overlay">
+                <i class="bi bi-arrow-right"></i>
+              </div>
+            </div>
+            <div class="category-content">
+              <h3 class="category-name">{{ category.name }}</h3>
+              <p class="category-description">{{ category.description }}</p>
+              <div class="category-meta">
+                <span class="product-count">
+                  <i class="bi bi-box"></i>
+                  {{ category.productCount }} Products
+                </span>
+                <span class="view-more" *ngIf="category.name === 'Electronics'; else otherCategory">
+                  <a routerLink="/category/electronics" class="btn btn-primary btn-sm">View Products <i class="bi bi-chevron-right"></i></a>
+                </span>
+                <ng-template #otherCategory>
+                  <span class="view-more">
+                    View Products <i class="bi bi-chevron-right"></i>
+                  </span>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2>Can't find what you're looking for?</h2>
+          <p>Browse through our extensive collection or contact our support team for assistance</p>
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">
+              <i class="bi bi-search"></i>
+              Search Products
+            </a>
+            <a href="#" class="btn btn-outline-primary">
+              <i class="bi bi-headset"></i>
+              Contact Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer> 
