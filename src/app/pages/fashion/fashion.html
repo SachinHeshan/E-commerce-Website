@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+
+<div class="fashion-page">
+  <div class="page-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="page-title">Fashion Collection</h1>
+          <p class="page-subtitle">Discover the latest trends in clothing, footwear, and accessories.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <div class="category-stats">
+            <span class="stat-item">
+              <i class="bi bi-tag"></i>
+              Fashion
+            </span>
+            <span class="stat-item">
+              <i class="bi bi-box"></i>
+              {{ products.length }} Items
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        <div class="col" *ngFor="let product of products">
+          <div class="card h-100 product-card">
+            <div class="product-image-container">
+              <img [src]="product.image" class="card-img-top product-img" [alt]="product.name">
+              <div class="product-actions-overlay">
+                <button class="btn btn-light btn-sm" (click)="toggleWishlist(product.id)"
+                        [class.active]="isInWishlist(product.id)">
+                  <i class="bi" [class.bi-heart-fill]="isInWishlist(product.id)"
+                     [class.bi-heart]="!isInWishlist(product.id)"></i>
+                </button>
+                <button class="btn btn-light btn-sm" (click)="viewProduct(product.id)">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+              <span class="product-badge" *ngIf="product.badge">{{ product.badge }}</span>
+              <span class="product-discount" *ngIf="product.discount"> -{{ product.discount }}%</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title product-name">{{ product.name }}</h5>
+              <p class="product-category">{{ product.category }}</p>
+              <div class="product-rating" *ngIf="product.rating">
+                <i class="bi bi-star-fill text-warning" *ngFor="let star of getStars(product.rating).fullArray"></i>
+                <i class="bi bi-star-half text-warning" *ngIf="getStars(product.rating).half"></i>
+                <i class="bi bi-star text-secondary" *ngFor="let star of getStars(product.rating).emptyArray"></i>
+                <span class="ms-1">({{ product.rating }})</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹{{ product.price | number:'1.2-2' }}</span>
+                <span class="old-price" *ngIf="product.oldPrice">₹{{ product.oldPrice | number:'1.2-2' }}</span>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 d-grid gap-2">
+              <button class="btn btn-primary btn-sm" (click)="addToCart(product)">
+                <i class="bi bi-cart-plus"></i> Add to Cart
+              </button>
+              <button class="btn btn-outline-primary btn-sm" (click)="buyNow(product)">
+                <i class="bi bi-lightning"></i> Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2>Find Your Perfect Style</h2>
+          <p>Explore more fashion options or contact our style advisors for personalized recommendations.</p>
+          <div class="cta-buttons">
+            <a routerLink="/categories" class="btn btn-primary">
+              <i class="bi bi-grid"></i> All Categories
+            </a>
+            <a href="#" class="btn btn-outline-primary">
+              <i class="bi bi-chat-dots"></i> Get Style Advice
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

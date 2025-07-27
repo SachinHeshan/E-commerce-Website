@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { Footer } from '../../shared/shared/footer/footer';
 import { Navbar } from '../../shared/navbar/navbar';
+import { CartService } from '../../shared/cart/cart.service'; // Ensure this path is correct
 
 // Define interfaces for type safety
 interface Category {
@@ -45,7 +46,7 @@ interface Testimonial {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, Footer, Navbar],
+  imports: [CommonModule, RouterModule, Footer, Navbar], // CartService is a service, not a component, so it's not listed here
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
 })
@@ -64,8 +65,8 @@ export class HomeComponent implements OnInit {
     { name: 'Samsung', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png' },
     { name: 'Nike', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png' },
     { name: 'Adidas', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png' },
-    { name: 'Sony', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Sony_logo.png/800px-Sony_logo.png' },
-    { name: 'Bosch', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Bosch-logo.svg/2560px-Bosch-logo.svg.png' }
+    { name: 'Sony', logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAgVBMVEUAAAD///9kZGTNzc1nZ2dsbGz4+PjExMSZmZnv7+/Jycm2trb09PTR0dHy8vLe3t6lpaW6urpCQkJPT09ZWVlzc3PX19fk5OS4uLgZGRktLS1KSkoODg44ODhXV1efn58eHh6NjY2Dg4N6enovLy+MjIxFRUWurq48PDwmJiYdHR0VEE55AAAEnElEQVR4nO3Ya3eqOBSAYbwFsCqgCFVs8XKsdv7/DxyEJCQQZ81acjqzZt7nS2vYgWwIyVbPAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgf2JzLt9833+Pr+PjX8Udx6dbUgUmt2D264fG9rrdNlmMWiIKPj1vHQRBN/DrlAkzMC835uFxa2o0r6fmgS/Pu5sNbfC3Ffc9YILnfNQlsmlQ/bHj0vmiHzhvczyExoH3tl9s9bh5Xtk9SxM3s9rSwfLbLfVJwzzPRf/Kje9EN6+izIiLdYiZ4cjf/UsyPMoHmJzvsiENlvaVm8urlLLrvm4oYpVQ9NGEHPzl0pgO2VF2PWXLZRO7Wi6zUzVpqob2DoX+pIlLs4k6YxVnzf9XNE8mt2f9PhadDM/q8ZkvWKAa122b8cDCe9tc38iF0eDdVNib0djcW/MaL1vXr5Yoeu2ZlWEqR5PvrSj1YMO2aWpMtIXxHB5jDw9m5zcVdtZNp/rz9uWsTNv6nKK/cO0WZoZy8oUfnahL7zmYGY7ETLfXGe6szmpOCvXKNYPpreCvkUOc9I9cjQxPciyXXpRafvQ8tTI0eswfGXZupHppRfNxI7qTdgh6/Qrnb+V5umnHsKv2dfWvHErW7/8h52miGuoMt3OdYinbXRkeVIp5faqFdaKh/LJW+JEQi9yPz2N7Nn7Ko1fHCWQueqmqM5x67dYSt3HdDL1CXd1X6U4O3tD0kmYJo9hYfNQkXTv6q/VULSp1htXr967PldSD9qv/Vvtu77HaNOLmVuVDVjLSsV/QSHOdo1z1HOtRNUYZrdYUlaGxbUx0hv1CdquC6n1C9G7BEA5tTdN1kiF+8zHfOboXMlYt8TpDvYU2HZ9kWC9o2mC7fMcle5aiXAnlSxX+4ei8eZphOwUfe3/yJEOzRJg5Dg/jUJyTLO+X1aPFwRqEa4BqR1R7mpGht9GnDDeP933V3U5relFyLWQD+NgUTS11LKbn4DbPV8IovpuHqF6WsaO/XKl0LWBm6H3plzyMHjfMtVR5h6gJ8V0HB5D0trljsS3VvG12p3t30+sPb6karAy978iaEs4MVW3z7jz4umqdFPd+s6wEZK0jlxrRH6GapLqWtDPUXf/ZDJ11RHPZefNBLZi9ibSXW3akN+puhm2BXd2hL+cQfiBDVy3Y7CGqClZ1QemMMt/QXobGYik+nUP4iQxHUXcnkrNU78DqxYzNoJ2jdWrN2dr172U4dMmtqEkUlcblx/LtOemWg/qqk+tvC7tSdBL8StNNXXxlaaXdPcdPMzym6edF7in57DNNXUXFQBnWWSZxEJQ3/QuD9U1N/7iySE6Xy7mc6M/WN6SWkU6xajLs/fYyHnX8hqrmUSHHE9G90uNBdLa/jbP0EUm7jT/NUG2MvZ8n0u7pej82vO5RUdy9IojsJIXvKKGmfvdOrG5mHuVyYrAWzg//caw3S4tsYskcG9eriul4Wk/+/az0H78RijDyy/GTr2m7y03/JrxYxq4i5z9hvy7uv+GLHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyp+eETXqv/wiNAAAAABJRU5ErkJggg==' },
+    { name: 'Bosch', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQenTjoKMQ68kRG7hvcUdysAapS02ZOxq6sTw&s' }
   ];
 
   products: Product[] = [
@@ -90,7 +91,7 @@ export class HomeComponent implements OnInit {
       name: "High Quality Plus Size Nursing Bra",
       category: "Clothing",
       description: "Comfortable and supportive bra designed for new mothers.",
-      image: 'https://images.unsplash.com/photo-1583394831850-6e7b8a0fa4b3?auto=format&fit=crop&w=600&h=400&q=80',
+      image: 'https://images.unsplash.com/photo-1711188054419-12b41ba78951?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8JTIySGlnaCUyMFF1YWxpdHklMjBQbHVzJTIwU2l6ZSUyME51cnNpbmclMjBCcmF8ZW58MHx8MHx8fDA%3D',
       price: 1548.83,
       oldPrice: 3295.75,
       badge: '',
@@ -106,7 +107,7 @@ export class HomeComponent implements OnInit {
       name: "Shoes for Men Casual Slip on Fashion",
       category: "Footwear",
       description: "Stylish and comfortable slip-on shoes for everyday wear.",
-      image: 'https://images.unsplash.com/photo-1608231387042-66d17712bbac?auto=format&fit=crop&w=600&h=400&q=80',
+      image: 'https://images.unsplash.com/photo-1658859186520-99b3c627675e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U2hvZXMlMjBmb3IlMjBNZW4lMjBDYXN1YWwlMjBTbGlwJTIwb24lMjBGYXNoaW9ufGVufDB8fDB8fHww',
       price: 6604.04,
       oldPrice: 14222.47,
       badge: '',
@@ -138,7 +139,7 @@ export class HomeComponent implements OnInit {
       name: "Portable Bluetooth Speaker with Deep Bass",
       category: "Electronics",
       description: "Compact and powerful speaker for music on the go. Long-lasting battery.",
-      image: 'https://images.unsplash.com/photo-1560706213-9aa725ec35b7?auto=format&fit=crop&w=600&h=400&q=80',
+      image: 'https://images.unsplash.com/photo-1631728126283-73d842f4f4d8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8UG9ydGFibGUlMjBCbHVldG9vdGglMjBTcGVha2VyJTIwd2l0aCUyMERlZXAlMjBCYXNzfGVufDB8fDB8fHww',
       price: 4999.00,
       oldPrice: 6500.00,
       badge: '',
@@ -186,7 +187,7 @@ export class HomeComponent implements OnInit {
       name: "Wireless Charging Pad",
       category: "Electronics",
       description: "Fast and efficient wireless charger for smartphones and earbuds.",
-      image: 'https://images.unsplash.com/photo-1584479925755-2a7c1e8f4b5b?auto=format&fit=crop&w=600&h=400&q=80',
+      image: 'https://images.unsplash.com/photo-1737882171913-f4ced0ce73d8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8V2lyZWxlc3MlMjBDaGFyZ2luZyUyMFBhZHxlbnwwfHwwfHx8MA%3D%3D',
       price: 1999.00,
       oldPrice: 2999.00,
       badge: 'Hot',
@@ -218,7 +219,7 @@ export class HomeComponent implements OnInit {
       name: "Stainless Steel Water Bottle",
       category: "Accessories",
       description: "Insulated bottle to keep drinks hot or cold for hours.",
-      image: 'https://images.unsplash.com/photo-1602143407151-721f548c73f0?auto=format&fit=crop&w=600&h=400&q=80',
+      image: 'https://images.unsplash.com/photo-1664714628878-9d2aa898b9e3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U3RhaW5sZXNzJTIwU3RlZWwlMjBXYXRlciUyMEJvdHRsZXxlbnwwfHwwfHx8MA%3D%3D',
       price: 1599.00,
       oldPrice: 2499.00,
       badge: 'Eco-Friendly',
@@ -228,10 +229,40 @@ export class HomeComponent implements OnInit {
       deal: false,
       choice: true,
       freeShipping: 3381.28
+    },
+    {
+      id: 12,
+      name: "Men's Slim Fit Jeans",
+      category: "Clothing",
+      description: "Comfortable and stylish slim fit jeans for everyday wear.",
+      image: 'https://images.unsplash.com/photo-1562044447-280a02d1cd22?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TWVuJ3MlMjBTbGltJTIwRml0JTIwSmVhbnN8ZW58MHx8MHx8fDA%3D',
+      price: 4500.00,
+      oldPrice: 6000.00,
+      badge: 'New',
+      rating: 4.5,
+      sold: 900,
+      discount: 25,
+      deal: false,
+      choice: false,
+      freeShipping: 3381.28
+    },
+    {
+      id: 13,
+      name: "Classic Leather Handbag",
+      category: "Accessories",
+      description: "Elegant and spacious leather handbag, perfect for any occasion.",
+      image: 'https://images.unsplash.com/photo-1743324690280-62c0699f46d2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2xhc3NpYyUyMExlYXRoZXIlMjBIYW5kYmFnfGVufDB8fDB8fHww',
+      price: 8999.00,
+      oldPrice: 12000.00,
+      badge: '',
+      rating: 4.8,
+      sold: 300,
+      discount: 25,
+      deal: true,
+      choice: true,
+      freeShipping: 3381.28
     }
 ];
-
-
 
   testimonials: Testimonial[] = [
     {
@@ -269,7 +300,7 @@ export class HomeComponent implements OnInit {
 
   wishlist: number[] = [1, 5]; // IDs of wishlisted products
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cartService: CartService) {} // Inject CartService here
 
   ngOnInit(): void {
     this.startCountdown();
@@ -295,18 +326,21 @@ export class HomeComponent implements OnInit {
     return re.test(email);
   }
 
+  // Updated addToCart method to use CartService
   addToCart(product: Product): void {
-    console.log('Added to cart:', product.name);
+    this.cartService.addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image
+    });
     alert(`${product.name} added to cart!`);
   }
 
-  buyNow(product: Product): void { // Added buyNow method
-    console.log('Buying now:', product.name);
-    alert(`Proceeding to checkout with ${product.name}!`);
-    // Example: Navigate to a checkout page or handle the purchase flow
-    // if (product.id) {
-    //   this.router.navigate(['/checkout', product.id]);
-    // }
+  // Updated buyNow method to use CartService and navigate to cart
+  buyNow(product: Product): void {
+    this.addToCart(product);
+    this.router.navigate(['/cart']);
   }
 
   toggleWishlist(productId: number): void {

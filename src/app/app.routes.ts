@@ -5,6 +5,7 @@ import { NewArrivalsComponent } from './pages/new-arrivals/new-arrivals';
 import { ElectronicsProductComponent } from './pages/electronics-product/electronics-product';
 import { CartComponent } from './shared/cart/cart';
 import { AllProductsComponent } from './pages/all-products/all-products';
+import { FashionComponent } from './pages/fashion/fashion';
 
 
 export const routes: Routes = [
@@ -14,4 +15,5 @@ export const routes: Routes = [
   { path: 'category/electronics', component: ElectronicsProductComponent },
   { path: 'cart', component: CartComponent },
   { path: 'products', component: AllProductsComponent },
+  { path: 'fashion', component: FashionComponent },
 ];
