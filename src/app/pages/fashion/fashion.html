@@ -48,10 +48,10 @@
               <h5 class="card-title product-name">{{ product.name }}</h5>
               <p class="product-category">{{ product.category }}</p>
               <div class="product-rating" *ngIf="product.rating">
-                <i class="bi bi-star-fill text-warning" *ngFor="let star of getStars(product.rating).fullArray"></i>
+                <i class="bi bi-star-fill text-warning" *ngFor="let star of getStars(product.rating).full"></i>
                 <i class="bi bi-star-half text-warning" *ngIf="getStars(product.rating).half"></i>
-                <i class="bi bi-star text-secondary" *ngFor="let star of getStars(product.rating).emptyArray"></i>
-                <span class="ms-1">({{ product.rating }})</span>
+                <i class="bi bi-star text-secondary" *ngFor="let star of getStars(product.rating).empty"></i>
+                <span class="ms-1">({{ product.rating}})</span>
               </div>
               <div class="product-price">
                 <span class="current-price">₹{{ product.price | number:'1.2-2' }}</span>

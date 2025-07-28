@@ -158,11 +158,16 @@ export class FashionComponent implements OnInit {
   }
 
   // Helper to get star icons for ratings
-  getStars(rating: number): { full: number; half: boolean; empty: number } {
-    const full = Math.floor(rating);
-    const half = rating % 1 >= 0.5;
-    const empty = 5 - full - (half ? 1 : 0);
-    return { full, half, empty };
+  getStars(rating: number): { full: number[]; half: boolean; empty: number[] } {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    return {
+      full: Array(fullStars).fill(0),
+      half: hasHalfStar,
+      empty: Array(emptyStars).fill(0)
+    };
   }
 
   // Add product to cart using CartService

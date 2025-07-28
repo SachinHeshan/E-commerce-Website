@@ -6,6 +6,7 @@ import { ElectronicsProductComponent } from './pages/electronics-product/electro
 import { CartComponent } from './shared/cart/cart';
 import { AllProductsComponent } from './pages/all-products/all-products';
 import { FashionComponent } from './pages/fashion/fashion';
+import { AuthModalComponent } from './pages/auth-modal/auth-modal'; 
 
 
 export const routes: Routes = [
@@ -16,4 +17,5 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'products', component: AllProductsComponent },
   { path: 'fashion', component: FashionComponent },
+  {path : 'auth', component: AuthModalComponent}
 ];
