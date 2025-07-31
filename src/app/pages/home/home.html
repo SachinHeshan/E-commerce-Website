@@ -93,7 +93,36 @@
       </div>
       
       
-    
+    <!-- Popup Modal -->
+<div class="modal fade" id="popupBanner" tabindex="-1" aria-labelledby="popupBannerLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-4 shadow-lg text-white" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+     url('https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600') no-repeat center center/cover;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title w-100 text-center fw-bold" id="popupBannerLabel">
+          🎉 Welcome to ShopEase 
+!
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center py-5 px-5 animate-bounce">
+        <p class="fs-3 fw-semibold mb-3">
+          Get <strong>20% OFF</strong> your first order!
+        </p>
+        <p class="fs-5 mb-3">Use code below at checkout:</p>
+        <div class="bg-white text-primary rounded-pill px-4 py-2 d-inline-block fw-bold fs-5 mb-4 shadow-sm">
+          WELCOME20
+        </div>
+        <p class="mb-4 fst-italic">Limited time offer—don’t miss out!</p>
+        <button type="button" class="btn btn-light text-primary fw-bold px-5 py-2 rounded-pill shadow" data-bs-dismiss="modal">
+          Start Shopping 🛍️
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
   
 
@@ -131,11 +160,11 @@
       </section>
       
 
-    <!-- Trending Products -->
+    <!-- Best Selling Products -->
     <div class="all-products-page mt-4">
         <div class="page-header">
           <div class="container">
-            <h1 class="page-title">Trending </h1>
+            <h1 class="page-title"> Best Selling Products </h1>
             <p class="page-subtitle">Browse all categories and find your favorite products!</p>
           </div>
         </div>
@@ -265,433 +294,104 @@
     </section>
 
     <!-- Best Selling Products -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="fw-bold section-title">Best Selling Products</h2>
-            <p class="text-muted mb-5">Customer favorites this month</p>
-            
-            <div class="row g-4">
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <span class="best-seller-badge">BEST SELLER</span>
-                            <img src="https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Smartphone">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                            <div class="badge bg-danger position-absolute top-0 end-0 m-3">
-                                -20%
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Smartphone X Pro</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-muted ms-2">(324)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">Flagship camera with 5G connectivity...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-muted text-decoration-line-through me-2">
-                                        $899.99
-                                    </span>
-                                    <span class="fw-bold text-primary">$719.99</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- More best selling products -->
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <span class="best-seller-badge">BEST SELLER</span>
-                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sports Shoes">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Running Shoes</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <span class="text-muted ms-2">(278)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">Lightweight cushioning for maximum comfort...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="fw-bold text-primary">$129.99</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <span class="best-seller-badge">BEST SELLER</span>
-                            <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Smart Home">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                            <div class="badge bg-danger position-absolute top-0 end-0 m-3">
-                                -30%
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Smart Home Hub</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-muted ms-2">(196)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">Control your entire home with voice commands...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-muted text-decoration-line-through me-2">
-                                        $199.99
-                                    </span>
-                                    <span class="fw-bold text-primary">$139.99</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <span class="best-seller-badge">BEST SELLER</span>
-                            <img src="https://images.unsplash.com/photo-1505740106531-4243f3831c78?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Fitness Tracker">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Fitness Tracker</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-muted ms-2">(243)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">Track steps, heart rate, and sleep quality...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="fw-bold text-primary">$89.99</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="all-products-page mt-4">
+        <div class="page-header">
+          <div class="container">
+            <h1 class="page-title"> Best Selling Products </h1>
+            <p class="page-subtitle">Browse all categories and find your favorite products!</p>
+          </div>
         </div>
-    </section>
+        <div class="container py-4">
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+              <div class="card h-100 shadow-sm position-relative">
+                <!-- Top-left badge (e.g., discount or custom) -->
+                <div *ngIf="product.badge" class="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small fw-bold rounded-end">
+                  {{ product.badge }}
+                </div>
+                <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body pb-2">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="fw-bold">{{ product.name }}</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-1">
+                    <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                      <i class="bi" [ngClass]="i < (product.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                    </ng-container>
+                    <span class="ms-2 small text-muted">{{ product.sold }} sold</span>
+                  </div>
+                  <div class="mb-1">
+                    <span class="fs-5 fw-bold text-primary">LKR{{ product.price | number:'1.2-2' }}</span>
+                    <span *ngIf="product.oldPrice" class="text-muted text-decoration-line-through ms-1">LKR{{ product.oldPrice | number:'1.2-2' }}</span>
+                  </div>
+                  <div *ngIf="product.discount" class="text-danger small fw-bold mb-1">Extra {{ product.discount }}% off with coins</div>
+                  <div class="mb-1">
+                    <span *ngIf="product.deal" class="badge bg-warning text-dark me-1">SuperDeals</span>
+                    <span *ngIf="product.choice" class="badge bg-secondary me-1">Choice</span>
+                  </div>
+                  <div class="mb-1 small text-success" *ngIf="product.freeShipping">Free shipping over LKR{{ product.freeShipping | number:'1.2-2' }}</div>
+                </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pt-0">
+                  <div class="d-flex gap-2 w-100">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" (click)="addToCart(product)">Add to Cart</button>
+                    <button class="btn btn-success btn-sm flex-fill" (click)="buyNow(product)">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Featured Products with Tabs -->
-    <section id="products" class="py-7">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-8">
-                    <h2 class="fw-bold section-title">Featured Products</h2>
-                    <p class="text-muted">Curated selection of premium items</p>
-                </div>
-                <div class="col-md-4 text-md-end">
-                    <ul class="nav nav-pills justify-content-md-end">
-                        <li class="nav-item">
-                            <a class="nav-link active">Electronics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Fashion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Home</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Wireless Headphones">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                            <div class="badge bg-danger position-absolute top-0 end-0 m-3">
-                                -25%
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Wireless Headphones</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-muted ms-2">(142)</span>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Add to wishlist</a></li>
-                                        <li><a class="dropdown-item" href="#">Compare</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">Premium sound quality with noise cancellation...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-muted text-decoration-line-through me-2">
-                                        $129.99
-                                    </span>
-                                    <span class="fw-bold text-primary">$99.99</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- More featured products -->
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Smart Watch">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Smart Watch Pro</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <span class="text-muted ms-2">(98)</span>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Add to wishlist</a></li>
-                                        <li><a class="dropdown-item" href="#">Compare</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">Track fitness, receive notifications, and more...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="fw-bold text-primary">$249.99</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Bluetooth Speaker">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                            <div class="badge bg-danger position-absolute top-0 end-0 m-3">
-                                -15%
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Portable Speaker</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-muted ms-2">(87)</span>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Add to wishlist</a></li>
-                                        <li><a class="dropdown-item" href="#">Compare</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">360° immersive sound with 20hr battery life...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-muted text-decoration-line-through me-2">
-                                        $89.99
-                                    </span>
-                                    <span class="fw-bold text-primary">$76.49</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Wireless Keyboard">
-                            <div class="card-actions">
-                                <button class="btn btn-danger btn-sm rounded-circle p-2">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm rounded-circle p-2">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Wireless Keyboard</h6>
-                                    <div class="text-warning small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-muted ms-2">(56)</span>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Add to wishlist</a></li>
-                                        <li><a class="dropdown-item" href="#">Compare</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3">Sleek design with silent keys and RGB lighting...</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="fw-bold text-primary">$79.99</span>
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                    <i class="bi bi-cart-plus me-1"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-5">
-                <a href="/products" class="btn btn-outline-primary px-5 py-3">
-                    View All Products <i class="bi bi-arrow-right ms-2"></i>
-                </a>
-            </div>
+    <div class="all-products-page mt-4">
+        <div class="page-header">
+          <div class="container">
+            <h1 class="page-title"> Featured Products </h1>
+            <p class="page-subtitle">Browse all categories and find your favorite products!</p>
+          </div>
         </div>
-    </section>
+        <div class="container py-4">
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+              <div class="card h-100 shadow-sm position-relative">
+                <!-- Top-left badge (e.g., discount or custom) -->
+                <div *ngIf="product.badge" class="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small fw-bold rounded-end">
+                  {{ product.badge }}
+                </div>
+                <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body pb-2">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="fw-bold">{{ product.name }}</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-1">
+                    <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                      <i class="bi" [ngClass]="i < (product.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                    </ng-container>
+                    <span class="ms-2 small text-muted">{{ product.sold }} sold</span>
+                  </div>
+                  <div class="mb-1">
+                    <span class="fs-5 fw-bold text-primary">LKR{{ product.price | number:'1.2-2' }}</span>
+                    <span *ngIf="product.oldPrice" class="text-muted text-decoration-line-through ms-1">LKR{{ product.oldPrice | number:'1.2-2' }}</span>
+                  </div>
+                  <div *ngIf="product.discount" class="text-danger small fw-bold mb-1">Extra {{ product.discount }}% off with coins</div>
+                  <div class="mb-1">
+                    <span *ngIf="product.deal" class="badge bg-warning text-dark me-1">SuperDeals</span>
+                    <span *ngIf="product.choice" class="badge bg-secondary me-1">Choice</span>
+                  </div>
+                  <div class="mb-1 small text-success" *ngIf="product.freeShipping">Free shipping over LKR{{ product.freeShipping | number:'1.2-2' }}</div>
+                </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pt-0">
+                  <div class="d-flex gap-2 w-100">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" (click)="addToCart(product)">Add to Cart</button>
+                    <button class="btn btn-success btn-sm flex-fill" (click)="buyNow(product)">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Promo Banner -->
     <section id="deals" class="py-5">

@@ -5,6 +5,9 @@ import { Footer } from '../../shared/shared/footer/footer';
 import { Navbar } from '../../shared/navbar/navbar';
 import { CartService } from '../../shared/cart/cart.service'; // Ensure this path is correct
 
+
+declare var bootstrap: any;
+
 // Define interfaces for type safety
 interface Category {
   name: string;
@@ -387,4 +390,17 @@ export class HomeComponent implements OnInit {
     const empty = 5 - full - (half ? 1 : 0);
     return { full, half, empty };
   }
+
+ ngAfterViewInit(): void {
+    setTimeout(() => {
+      const modalElement = document.getElementById('popupBanner');
+      if (modalElement) {
+        const popup = new bootstrap.Modal(modalElement);
+        popup.show();
+      }
+    }, 3000); // Show after 3 seconds
+  }
+
+
 }
+  
