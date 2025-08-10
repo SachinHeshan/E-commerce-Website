@@ -1,0 +1,24 @@
+
+<app-navbar></app-navbar>
+<div class="cart-page container py-4">
+  <h2 class="mb-4">Your Cart</h2>
+  <div *ngIf="items.length; else emptyCart">
+    <div class="cart-list mb-4">
+      <div class="cart-item d-flex align-items-center mb-3" *ngFor="let item of items">
+        <img [src]="item.image" [alt]="item.name" class="cart-img me-3">
+        <div class="flex-grow-1">
+          <div class="fw-bold">{{ item.name }}</div>
+          <div class="text-muted">${{ item.price }} x {{ item.quantity }}</div>
+        </div>
+        <button class="btn btn-danger btn-sm ms-2" (click)="removeItem(item.id)"><i class="bi bi-trash"></i> Remove</button>
+      </div>
+    </div>
+    <div class="cart-total text-end">
+      <h4>Total: ${{ total }}</h4>
+    </div>
+  </div>
+  <ng-template #emptyCart>
+    <div class="alert alert-info">Your cart is empty.</div>
+  </ng-template>
+</div> 
+<app-footer></app-footer> 

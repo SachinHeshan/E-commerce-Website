@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="all-products-page">
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">All Products</h1>
+      <p class="page-subtitle">Browse all categories and find your favorite products!</p>
+    </div>
+  </div>
+  <div class="container py-4">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+        <div class="card h-100 shadow-sm position-relative">
+          <!-- Top-left badge (e.g., discount or custom) -->
+          <div *ngIf="product.badge" class="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small fw-bold rounded-end">
+            {{ product.badge }}
+          </div>
+          <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+          <div class="card-body pb-2">
+            <div class="d-flex align-items-center mb-1">
+              <span class="fw-bold">{{ product.name }}</span>
+            </div>
+            <div class="d-flex align-items-center mb-1">
+              <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                <i class="bi" [ngClass]="i < (product.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+              </ng-container>
+              <span class="ms-2 small text-muted">{{ product.sold }} sold</span>
+            </div>
+            <div class="mb-1">
+              <span class="fs-5 fw-bold text-primary">LKR{{ product.price | number:'1.2-2' }}</span>
+              <span *ngIf="product.oldPrice" class="text-muted text-decoration-line-through ms-1">LKR{{ product.oldPrice | number:'1.2-2' }}</span>
+            </div>
+            <div *ngIf="product.discount" class="text-danger small fw-bold mb-1">Extra {{ product.discount }}% off with coins</div>
+            <div class="mb-1">
+              <span *ngIf="product.deal" class="badge bg-warning text-dark me-1">SuperDeals</span>
+              <span *ngIf="product.choice" class="badge bg-secondary me-1">Choice</span>
+            </div>
+            <div class="mb-1 small text-success" *ngIf="product.freeShipping">Free shipping over LKR{{ product.freeShipping | number:'1.2-2' }}</div>
+          </div>
+          <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pt-0">
+            <div class="d-flex gap-2 w-100">
+              <button class="btn btn-outline-primary btn-sm flex-fill" (click)="addToCart(product)">Add to Cart</button>
+              <button class="btn btn-success btn-sm flex-fill" (click)="buyNow(product)">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer> 

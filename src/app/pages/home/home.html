@@ -1,0 +1,544 @@
+<app-navbar></app-navbar>
+
+    <!-- Hero Section with Gradient & Animation -->
+    <section class="hero-section d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row align-items-center">
+            
+            <!-- Left Content -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <h1 class="display-4 fw-bold text-white mb-3 animate__animated animate__fadeInDown">
+                Shop Smarter, <span class="text-accent">Not Harder</span>
+              </h1>
+              <p class="lead text-light mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                Discover top-quality collections with up to <strong>60% off</strong>. Free shipping on orders over $50.
+              </p>
+              <div class="d-flex gap-3 animate__animated animate__fadeInUp animate__delay-1s">
+                <a routerLink="/products" class="btn btn-light btn-lg px-4 py-3 rounded-pill shadow">
+                  Shop Now <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+                <a href="#deals" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+                  Today's Deals
+                </a>
+              </div>
+            </div>
+      
+            <!-- Right Image -->
+            <div class="col-lg-6 text-center">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?auto=format&fit=crop&w=800&q=80"
+                     alt="Shopping"
+                     class="img-fluid rounded-4 shadow-lg animate__animated animate__zoomIn"
+                     style="max-height: 450px;">
+                <div class="position-absolute top-0 start-0 bg-accent text-dark py-2 px-3 rounded-end">
+                  <span class="fw-bold">Summer Sale</span> 🔥
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+
+
+
+       <!-- Trending Products -->
+    <div class="all-products-page mt-4">
+        <div class="page-header">
+          <div class="container">
+            <h1 class="page-title">Trending </h1>
+            <p class="page-subtitle">Browse all categories and find your favorite products!</p>
+          </div>
+        </div>
+        <div class="container py-4">
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+              <div class="card h-100 shadow-sm position-relative">
+                <!-- Top-left badge (e.g., discount or custom) -->
+                <div *ngIf="product.badge" class="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small fw-bold rounded-end">
+                  {{ product.badge }}
+                </div>
+                <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body pb-2">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="fw-bold">{{ product.name }}</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-1">
+                    <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                      <i class="bi" [ngClass]="i < (product.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                    </ng-container>
+                    <span class="ms-2 small text-muted">{{ product.sold }} sold</span>
+                  </div>
+                  <div class="mb-1">
+                    <span class="fs-5 fw-bold text-primary">LKR{{ product.price | number:'1.2-2' }}</span>
+                    <span *ngIf="product.oldPrice" class="text-muted text-decoration-line-through ms-1">LKR{{ product.oldPrice | number:'1.2-2' }}</span>
+                  </div>
+                  <div *ngIf="product.discount" class="text-danger small fw-bold mb-1">Extra {{ product.discount }}% off with coins</div>
+                  <div class="mb-1">
+                    <span *ngIf="product.deal" class="badge bg-warning text-dark me-1">SuperDeals</span>
+                    <span *ngIf="product.choice" class="badge bg-secondary me-1">Choice</span>
+                  </div>
+                  <div class="mb-1 small text-success" *ngIf="product.freeShipping">Free shipping over LKR{{ product.freeShipping | number:'1.2-2' }}</div>
+                </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pt-0">
+                  <div class="d-flex gap-2 w-100">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" (click)="addToCart(product)">Add to Cart</button>
+                    <button class="btn btn-success btn-sm flex-fill" (click)="buyNow(product)">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    <!-- Popup Modal -->
+<div class="modal fade" id="popupBanner" tabindex="-1" aria-labelledby="popupBannerLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-4 shadow-lg text-white" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+     url('https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600') no-repeat center center/cover;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title w-100 text-center fw-bold" id="popupBannerLabel">
+          🎉 Welcome to ShopEase 
+!
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center py-5 px-5 animate-bounce">
+        <p class="fs-3 fw-semibold mb-3">
+          Get <strong>20% OFF</strong> your first order!
+        </p>
+        <p class="fs-5 mb-3">Use code below at checkout:</p>
+        <div class="bg-white text-primary rounded-pill px-4 py-2 d-inline-block fw-bold fs-5 mb-4 shadow-sm">
+          WELCOME20
+        </div>
+        <p class="mb-4 fst-italic">Limited time offer—don’t miss out!</p>
+        <button type="button" class="btn btn-light text-primary fw-bold px-5 py-2 rounded-pill shadow" data-bs-dismiss="modal">
+          Start Shopping 🛍️
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+    <!-- Newly Arrived Brands -->
+    <section class="py-5">
+        <div class="container">
+          <div class="row mb-4 align-items-center">
+            <div class="col-md-8">
+              <h2 class="fw-bold section-title">Newly Arrived Brands</h2>
+              <p class="text-muted">Discover the latest brands in our collection</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+              <a routerLink="/brands" class="btn btn-link text-primary">
+                View All Brands <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+      
+          <div class="row g-4">
+            <div
+              class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
+              *ngFor="let brand of brands"
+            >
+              <div class="card brand-card h-100">
+                <div class="brand-logo d-flex align-items-center justify-content-center p-3">
+                  <img [src]="brand.logo" [alt]="brand.name" class="img-fluid" />
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="mb-0">{{ brand.name }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Best Selling Products -->
+    <div class="all-products-page mt-4">
+        <div class="page-header">
+          <div class="container">
+            <h1 class="page-title"> Best Selling Products </h1>
+            <p class="page-subtitle">Browse all categories and find your favorite products!</p>
+          </div>
+        </div>
+        <div class="container py-4">
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+              <div class="card h-100 shadow-sm position-relative">
+                <!-- Top-left badge (e.g., discount or custom) -->
+                <div *ngIf="product.badge" class="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small fw-bold rounded-end">
+                  {{ product.badge }}
+                </div>
+                <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body pb-2">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="fw-bold">{{ product.name }}</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-1">
+                    <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                      <i class="bi" [ngClass]="i < (product.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                    </ng-container>
+                    <span class="ms-2 small text-muted">{{ product.sold }} sold</span>
+                  </div>
+                  <div class="mb-1">
+                    <span class="fs-5 fw-bold text-primary">LKR{{ product.price | number:'1.2-2' }}</span>
+                    <span *ngIf="product.oldPrice" class="text-muted text-decoration-line-through ms-1">LKR{{ product.oldPrice | number:'1.2-2' }}</span>
+                  </div>
+                  <div *ngIf="product.discount" class="text-danger small fw-bold mb-1">Extra {{ product.discount }}% off with coins</div>
+                  <div class="mb-1">
+                    <span *ngIf="product.deal" class="badge bg-warning text-dark me-1">SuperDeals</span>
+                    <span *ngIf="product.choice" class="badge bg-secondary me-1">Choice</span>
+                  </div>
+                  <div class="mb-1 small text-success" *ngIf="product.freeShipping">Free shipping over LKR{{ product.freeShipping | number:'1.2-2' }}</div>
+                </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pt-0">
+                  <div class="d-flex gap-2 w-100">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" (click)="addToCart(product)">Add to Cart</button>
+                    <button class="btn btn-success btn-sm flex-fill" (click)="buyNow(product)">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+        <!-- Categories Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Shop By Category</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-2 col-4 text-center">
+                    <a routerLink="/category/electronics" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body p-3">
+                                <div class="icon-lg bg-primary-soft text-primary rounded-circle mx-auto mb-3">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <h6 class="mb-0">Electronics</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 col-4 text-center">
+                    <a routerLink="/products" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body p-3">
+                                <div class="icon-lg bg-primary-soft text-primary rounded-circle mx-auto mb-3">
+                                    <i class="bi bi-bag"></i>
+                                </div>
+                                <h6 class="mb-0">Fashion</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 col-4 text-center">
+                    <a routerLink="/products" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body p-3">
+                                <div class="icon-lg bg-primary-soft text-primary rounded-circle mx-auto mb-3">
+                                    <i class="bi bi-house"></i>
+                                </div>
+                                <h6 class="mb-0">Home</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 col-4 text-center">
+                    <a routerLink="/products" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body p-3">
+                                <div class="icon-lg bg-primary-soft text-primary rounded-circle mx-auto mb-3">
+                                    <i class="bi bi-flower1"></i>
+                                </div>
+                                <h6 class="mb-0">Beauty</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 col-4 text-center">
+                    <a href="/category/sports" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body p-3">
+                                <div class="icon-lg bg-primary-soft text-primary rounded-circle mx-auto mb-3">
+                                    <i class="bi bi-bicycle"></i>
+                                </div>
+                                <h6 class="mb-0">Sports</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 col-4 text-center">
+                    <a href="/category/books" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <div class="card-body p-3">
+                                <div class="icon-lg bg-primary-soft text-primary rounded-circle mx-auto mb-3">
+                                    <i class="bi bi-book"></i>
+                                </div>
+                                <h6 class="mb-0">Books</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Selling Products -->
+    <div class="all-products-page mt-4">
+        <div class="page-header">
+          <div class="container">
+            <h1 class="page-title"> Best Selling Products </h1>
+            <p class="page-subtitle">Browse all categories and find your favorite products!</p>
+          </div>
+        </div>
+        <div class="container py-4">
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+              <div class="card h-100 shadow-sm position-relative">
+                <!-- Top-left badge (e.g., discount or custom) -->
+                <div *ngIf="product.badge" class="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small fw-bold rounded-end">
+                  {{ product.badge }}
+                </div>
+                <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body pb-2">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="fw-bold">{{ product.name }}</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-1">
+                    <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                      <i class="bi" [ngClass]="i < (product.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                    </ng-container>
+                    <span class="ms-2 small text-muted">{{ product.sold }} sold</span>
+                  </div>
+                  <div class="mb-1">
+                    <span class="fs-5 fw-bold text-primary">LKR{{ product.price | number:'1.2-2' }}</span>
+                    <span *ngIf="product.oldPrice" class="text-muted text-decoration-line-through ms-1">LKR{{ product.oldPrice | number:'1.2-2' }}</span>
+                  </div>
+                  <div *ngIf="product.discount" class="text-danger small fw-bold mb-1">Extra {{ product.discount }}% off with coins</div>
+                  <div class="mb-1">
+                    <span *ngIf="product.deal" class="badge bg-warning text-dark me-1">SuperDeals</span>
+                    <span *ngIf="product.choice" class="badge bg-secondary me-1">Choice</span>
+                  </div>
+                  <div class="mb-1 small text-success" *ngIf="product.freeShipping">Free shipping over LKR{{ product.freeShipping | number:'1.2-2' }}</div>
+                </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pt-0">
+                  <div class="d-flex gap-2 w-100">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" (click)="addToCart(product)">Add to Cart</button>
+                    <button class="btn btn-success btn-sm flex-fill" (click)="buyNow(product)">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Featured Products with Tabs -->
+    <div class="all-products-page mt-4">
+        <div class="page-header">
+          <div class="container">
+            <h1 class="page-title"> Featured Products </h1>
+            <p class="page-subtitle">Browse all categories and find your favorite products!</p>
+          </div>
+        </div>
+        <div class="container py-4">
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products">
+              <div class="card h-100 shadow-sm position-relative">
+                <!-- Top-left badge (e.g., discount or custom) -->
+                <div *ngIf="product.badge" class="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small fw-bold rounded-end">
+                  {{ product.badge }}
+                </div>
+                <img [src]="product.image" [alt]="product.name" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body pb-2">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="fw-bold">{{ product.name }}</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-1">
+                    <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                      <i class="bi" [ngClass]="i < (product.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                    </ng-container>
+                    <span class="ms-2 small text-muted">{{ product.sold }} sold</span>
+                  </div>
+                  <div class="mb-1">
+                    <span class="fs-5 fw-bold text-primary">LKR{{ product.price | number:'1.2-2' }}</span>
+                    <span *ngIf="product.oldPrice" class="text-muted text-decoration-line-through ms-1">LKR{{ product.oldPrice | number:'1.2-2' }}</span>
+                  </div>
+                  <div *ngIf="product.discount" class="text-danger small fw-bold mb-1">Extra {{ product.discount }}% off with coins</div>
+                  <div class="mb-1">
+                    <span *ngIf="product.deal" class="badge bg-warning text-dark me-1">SuperDeals</span>
+                    <span *ngIf="product.choice" class="badge bg-secondary me-1">Choice</span>
+                  </div>
+                  <div class="mb-1 small text-success" *ngIf="product.freeShipping">Free shipping over LKR{{ product.freeShipping | number:'1.2-2' }}</div>
+                </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center pt-0">
+                  <div class="d-flex gap-2 w-100">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" (click)="addToCart(product)">Add to Cart</button>
+                    <button class="btn btn-success btn-sm flex-fill" (click)="buyNow(product)">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Promo Banner -->
+    <section id="deals" class="py-5">
+        <div class="container">
+            <div class="card bg-dark text-white border-0 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-6 p-5 d-flex align-items-center">
+                        <div class="p-lg-5">
+                            <span class="badge bg-warning text-dark mb-3">Limited Time</span>
+                            <h2 class="display-5 fw-bold">Summer Flash Sale</h2>
+                            <p class="lead">Up to 60% off on selected items. Hurry before it's gone!</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <div class="countdown-box me-3">
+                                    <div class="fs-3 fw-bold">02</div>
+                                    <div class="text-uppercase small">Days</div>
+                                </div>
+                                <div class="countdown-box me-3">
+                                    <div class="fs-3 fw-bold">14</div>
+                                    <div class="text-uppercase small">Hours</div>
+                                </div>
+                                <div class="countdown-box">
+                                    <div class="fs-3 fw-bold">45</div>
+                                    <div class="text-uppercase small">Mins</div>
+                                </div>
+                                <a href="/sale" class="btn btn-light ms-auto rounded-pill px-4">
+                                    Shop Sale <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-none d-md-block">
+                        <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=800&q=80" 
+                            class="img-fluid h-100" 
+                            style="object-fit: cover;"
+                            alt="Summer sale">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-7 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">What Our Customers Say</h2>
+                <p class="text-muted">Rated 4.8/5 from 10,000+ reviews</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+                                <div>
+                                    <h6 class="mb-0">Sarah Johnson</h6>
+                                    <div class="text-warning small">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">"The delivery was incredibly fast and the product quality exceeded my expectations. Will definitely shop here again!"</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top">
+                            <small class="text-muted">Posted on July 15, 2023</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/44.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+                                <div>
+                                    <h6 class="mb-0">Michael Chen</h6>
+                                    <div class="text-warning small">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">"Excellent customer service! They helped me choose the perfect product and even offered a discount on my next purchase."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top">
+                            <small class="text-muted">Posted on July 18, 2023</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+                                <div>
+                                    <h6 class="mb-0">Emma Rodriguez</h6>
+                                    <div class="text-warning small">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">"The return process was so easy when I needed to exchange a size. This store has earned a loyal customer in me."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top">
+                            <small class="text-muted">Posted on July 22, 2023</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-7">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <i class="bi bi-envelope-open display-1 text-primary mb-3"></i>
+                    <h2 class="fw-bold mb-3">Get Special Discounts</h2>
+                    <p class="text-muted mb-4">Subscribe to our newsletter and get 15% off your first order</p>
+                    
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                        <button class="btn btn-primary btn-lg px-4" type="button">Subscribe</button>
+                    </div>
+                    <small class="text-muted">You can unsubscribe at any time. Read our <a href="#">Privacy Policy</a></small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+
+<app-footer></app-footer>

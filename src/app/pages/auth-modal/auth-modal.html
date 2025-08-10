@@ -1,0 +1,136 @@
+<app-navbar></app-navbar>
+
+<div class="auth-page">
+  <div class="auth-wrapper">
+    <!-- Replace the existing auth-illustration div with this code -->
+<div class="auth-illustration">
+  <img src="https://images.pexels.com/photos/5076516/pexels-photo-5076516.jpeg?auto=compress&cs=tinysrgb&w=600" 
+       alt="Illustration showing a secure login concept with a person holding a smartphone" />
+</div>
+
+    <div class="auth-form-box">
+      <div class="form-container" [ngClass]="{'active': activeTab === 'signin'}">
+        <h2 class="form-title">Welcome Back</h2>
+        <p class="form-subtitle">Login to manage your orders, wishlist and more.</p>
+
+        <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <div class="input-group">
+              <i class="bi bi-envelope"></i>
+              <input type="email" id="loginEmail" formControlName="email" placeholder="Enter your email" />
+            </div>
+            <div class="error" *ngIf="signInForm.get('email')?.touched && signInForm.get('email')?.invalid">
+              {{ getErrorMessage('email', signInForm) }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="input-group">
+              <i class="bi bi-lock"></i>
+              <input type="password" id="loginPassword" formControlName="password" placeholder="Enter your password" />
+            </div>
+            <div class="error" *ngIf="signInForm.get('password')?.touched && signInForm.get('password')?.invalid">
+              {{ getErrorMessage('password', signInForm) }}
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" /> Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn-submit" [disabled]="isSubmitting">Login</button>
+
+          <div class="social-login">
+            <p>Or continue with</p>
+            <div class="social-buttons">
+              <button type="button" class="btn-social google"><i class="bi bi-google"></i></button>
+              <button type="button" class="btn-social facebook"><i class="bi bi-facebook"></i></button>
+              <button type="button" class="btn-social twitter"><i class="bi bi-twitter"></i></button>
+            </div>
+          </div>
+        </form>
+
+        <p class="switch-form">
+          Don't have an account?
+          <a href="#" (click)="switchTab('signup'); $event.preventDefault()">Register Now</a>
+        </p>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div class="form-container" [ngClass]="{'active': activeTab === 'signup'}">
+        <h2 class="form-title">Create Your Account</h2>
+        <p class="form-subtitle">Sign up to start shopping with us today.</p>
+
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+          <div class="form-group">
+            <label for="registerName">Full Name</label>
+            <div class="input-group">
+              <i class="bi bi-person"></i>
+              <input type="text" id="registerName" formControlName="fullName" placeholder="Your full name" />
+            </div>
+            <div class="error" *ngIf="signUpForm.get('fullName')?.touched && signUpForm.get('fullName')?.invalid">
+              {{ getErrorMessage('fullName', signUpForm) }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <div class="input-group">
+              <i class="bi bi-envelope"></i>
+              <input type="email" id="registerEmail" formControlName="email" placeholder="Your email address" />
+            </div>
+            <div class="error" *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
+              {{ getErrorMessage('email', signUpForm) }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <div class="input-group">
+              <i class="bi bi-lock"></i>
+              <input type="password" id="registerPassword" formControlName="password" placeholder="Create a password" />
+            </div>
+            <div class="error" *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid">
+              {{ getErrorMessage('password', signUpForm) }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="input-group">
+              <i class="bi bi-lock"></i>
+              <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Re-enter password" />
+            </div>
+            <div class="error" *ngIf="signUpForm.hasError('passwordMismatch') && signUpForm.get('confirmPassword')?.touched">
+              Passwords do not match
+            </div>
+          </div>
+
+          <div class="form-terms">
+            <label class="terms-checkbox">
+              <input type="checkbox" formControlName="terms" required />
+              I agree to the <a href="#">Terms & Conditions</a>
+            </label>
+            <div class="error" *ngIf="signUpForm.get('terms')?.touched && signUpForm.get('terms')?.invalid">
+              You must accept the terms
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" [disabled]="isSubmitting">Register</button>
+        </form>
+
+        <p class="switch-form">
+          Already have an account?
+          <a href="#" (click)="switchTab('signin'); $event.preventDefault()">Login Here</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

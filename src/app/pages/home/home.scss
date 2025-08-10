@@ -1,0 +1,262 @@
+
+/* home.scss */
+
+// Import Bootstrap's functions and variables (if you're customizing Bootstrap)
+// @import '~bootstrap/scss/functions';
+// @import '~bootstrap/scss/variables';
+// @import '~bootstrap/scss/mixins';
+
+.product-card {
+  // Styles for the .card itself
+  .card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; // Slightly more pronounced shadow on hover
+    }
+  }
+
+  // Position for the 1/6 PCS tag
+  .position-relative {
+    position: relative;
+  }
+
+  .position-absolute.top-0.start-0.m-2 {
+    background-color: rgba(0, 0, 0, 0.5); // Semi-transparent background
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  // Adjustments for the image
+  img {
+    object-fit: cover; // Ensure images cover their space nicely
+    height: 150px; // Fixed height for consistency, adjust as needed
+    width: 100%;
+  }
+
+  // Card body content alignment
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // Distributes space to push buttons to bottom
+    height: 100%; // Ensure card body takes full height of the card
+  }
+
+  // Product title
+  p.fw-semibold.small.mb-1.text-truncate {
+    white-space: nowrap; // Keep text on a single line
+    overflow: hidden;    // Hide overflow
+    text-overflow: ellipsis; // Add ellipsis for overflowed text
+    font-size: 0.9rem; // Slightly smaller font for compactness
+  }
+
+  // Star ratings and sold text
+  .d-flex.align-items-center.mb-1.small {
+    i {
+      font-size: 0.8rem; // Smaller stars
+      margin-right: 2px;
+    }
+    span {
+      font-size: 0.8rem; // Smaller sold text
+    }
+  }
+
+  // Price styling
+  .fw-bold.text-danger.me-1 {
+    font-size: 1rem; // Base font size for current price
+  }
+  .text-muted.text-decoration-line-through {
+    font-size: 0.8rem; // Smaller font for old price
+  }
+
+  // Badges (SuperDeals, Choice)
+  .badge {
+    padding: 0.3em 0.6em; // Adjust padding for badges
+    font-size: 0.7rem; // Smaller font size for badges
+    &.bg-warning {
+      background-color: #ffc107 !important; // Ensure warning yellow
+      color: #212529 !important; // Dark text on yellow
+    }
+    &.bg-light.text-secondary.border {
+      background-color: #f8f9fa !important; // Light background
+      color: #6c757d !important; // Secondary text color
+      border-color: #6c757d !important; // Matching border color
+    }
+  }
+
+  // Discount and shipping notes
+  .text-danger.small,
+  .text-muted.small {
+    font-size: 0.75rem; // Smaller font for these notes
+  }
+
+  // Buttons
+  .btn-sm {
+    padding: 0.3rem 0.6rem; // Adjust button padding for smaller size
+    font-size: 0.8rem;     // Adjust button font size
+  }
+
+  .btn-outline-primary {
+    border-color: #0d6efd; // Bootstrap primary blue border
+    color: #0d6efd; // Bootstrap primary blue text
+    &:hover {
+      background-color: #0d6efd;
+      color: white;
+    }
+  }
+
+  .btn-success {
+    background-color: #198754; // Bootstrap success green
+    border-color: #198754; // Bootstrap success green border
+    color: white;
+    &:hover {
+      background-color: #157347; // Darker green on hover
+      border-color: #157347;
+    }
+  }
+}
+
+
+.hero-section {
+    background: linear-gradient(135deg, #1a1a40, #2e2e73);
+    min-height: 100vh;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  
+    .text-accent {
+      color: #ffc107; // Bootstrap warning color
+    }
+  
+    .bg-accent {
+      background-color: #ffc107;
+    }
+  
+    h1 {
+      font-size: 3rem;
+  
+      @media (max-width: 768px) {
+        font-size: 2.2rem;
+      }
+    }
+  
+    p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+    }
+    
+
+    .all-products-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    
+    .page-header {
+      background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+      color: white;
+      padding: 3rem 0 2rem;
+      margin-bottom: 2rem;
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .page-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+    }
+    
+    .card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      &:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 16px 48px rgba(24,90,157,0.15);
+      }
+      .card-img-top {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        height: 200px;
+        object-fit: cover;
+      }
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #185a9d;
+      }
+      .card-footer {
+        font-size: 1rem;
+        .btn {
+          border-radius: 50px;
+          font-weight: 600;
+          padding: 0.4rem 1.2rem;
+        }
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 1.5rem 0 1rem;
+        .page-title {
+          font-size: 1.5rem;
+        }
+      }
+      .card {
+        .card-img-top {
+          height: 150px;
+        }
+      }
+    } 
+
+     .animate-bounce {
+    animation: bounce 0.6s ease-in-out;
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+
+  .modal-content {
+    transition: all 0.3s ease;
+  }
+
+  .modal-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-light {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-light:hover {
+    background-color: #e6f0ff;
+    transform: scale(1.05);
+  }
+
+
+
+
+
+
+
+
+
+
+
+  }
+  

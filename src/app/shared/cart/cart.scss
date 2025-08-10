@@ -1,0 +1,36 @@
+.cart-page {
+  min-height: 60vh;
+  .cart-list {
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    padding: 2rem;
+  }
+  .cart-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    &:last-child {
+      border-bottom: none;
+    }
+    .cart-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #f8f9fa;
+    }
+    .btn {
+      font-size: 0.9rem;
+    }
+  }
+  .cart-total {
+    margin-top: 2rem;
+    h4 {
+      font-weight: 700;
+      color: #185a9d;
+    }
+  }
+  .alert {
+    margin-top: 2rem;
+  }
+} 
